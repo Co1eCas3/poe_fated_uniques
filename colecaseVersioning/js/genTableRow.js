@@ -40,7 +40,7 @@ CompleteTable.map(rowData => {
 
 async function pollForGroupedCell(el, item) {
   const data = await PollTradeSite(item);
-  const itemAmount = currencyConverter(data.amount);
+  const itemAmount = currencyConverter(data).amount;
 
   el.querySelector(`[class$='amount']`).textContent = itemAmount;
   el.querySelector(`[class$='wiki']`).innerHTML = `
@@ -56,6 +56,3 @@ async function pollForGroupedCell(el, item) {
 function updateProfit(prophecyAmount, ingredientAmount, resultAmount) {
   return Math.round(resultAmount - ingredientAmount - prophecyAmount);
 }
-
-
-
